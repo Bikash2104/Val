@@ -1,0 +1,362 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Will You Be My Valentine? ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            position: relative;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            position: relative;
+            height: 100px;
+        }
+
+        button {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        #yesBtn {
+            background: #ff4d6d;
+            color: white;
+            left: 60px;
+        }
+
+        #noBtn {
+            background: #ccc;
+            color: #333;
+            left: 200px;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 22px;
+            color: #ff4d6d;
+            display: none;
+        }
+
+        #footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Will you be my Valentine? 💖</h1>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 😅</button>
+    </div>
+
+    <div id="result">I Love You ❤️</div>
+    <div id="footer">You made my day full of happiness 💕</div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const result = document.getElementById("result");
+    const footer = document.getElementById("footer");
+
+    const messages = [
+        "Are you sure? 😢",
+        "Think again 💭",
+        "Don't break my heart 💔",
+        "Last chance 😅",
+        "Okay… but really? 🥺"
+    ];
+
+    let msgIndex = 0;
+
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * 250;
+        const y = Math.random() * 60;
+
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+
+        noBtn.innerText = messages[msgIndex];
+        msgIndex = (msgIndex + 1) % messages.length;
+    });
+
+    yesBtn.addEventListener("click", () => {
+        result.style.display = "block";
+        footer.style.display = "block";
+        noBtn.style.display = "none";
+        yesBtn.style.display = "none";
+    });
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Will You Be My Valentine? ❤️</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 💖 Floating Hearts Background */
+      .hearts {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 20px;
+        animation: floatUp 8s linear infinite;
+        opacity: 0.8;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-110vh) scale(1.5);
+          opacity: 0;
+        }
+      }
+
+      /* 💌 Main Card */
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        width: 420px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      h1 {
+        color: #ff4d6d;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        position: relative;
+        height: 100px;
+      }
+
+      button {
+        padding: 12px 28px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        position: absolute;
+        transition: 0.3s;
+      }
+
+      #yesBtn {
+        background: #ff4d6d;
+        color: white;
+        left: 70px;
+      }
+
+      #noBtn {
+        background: #ddd;
+        color: #333;
+        left: 220px;
+      }
+
+      #result {
+        display: none;
+        font-size: 26px;
+        color: #ff4d6d;
+        animation: pop 0.6s ease;
+      }
+
+      #footer {
+        display: none;
+        margin-top: 10px;
+        font-size: 15px;
+        color: #555;
+      }
+
+      @keyframes pop {
+        from {
+          transform: scale(0.6);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      #teddy {
+        display: none;
+        font-size: 70px;
+        margin-top: 15px;
+        animation: kiss 1.5s infinite;
+      }
+
+      @keyframes kiss {
+        0% {
+          transform: scale(1) translateY(0);
+        }
+        25% {
+          transform: scale(1.2) translateY(-5px);
+        }
+        50% {
+          transform: scale(1) translateY(0);
+        }
+        75% {
+          transform: scale(1.15) translateY(-3px);
+        }
+        100% {
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      /* Hide question after Yes */
+      .hide-question h1 {
+        display: none;
+      }
+
+      /* Adjust layout after Yes */
+      .love-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 360px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 💖 Background Hearts -->
+    <div class="hearts" id="hearts"></div>
+
+    <div class="container">
+      <h1>Will you be my Valentine? 💕</h1>
+
+      <div class="buttons">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 😅</button>
+      </div>
+
+      <div id="result">I Love You Susmita ❤️</div>
+      <div id="teddy">🧸💋</div>
+      <div id="footer">You made my day full of happiness 💖</div>
+    </div>
+
+    <script>
+      // 💖 Generate Floating Hearts
+      const heartsContainer = document.getElementById("hearts");
+
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heartsContainer.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 8000);
+      }, 300);
+
+      // 😅 No Button Escape Logic
+      const noBtn = document.getElementById("noBtn");
+      const yesBtn = document.getElementById("yesBtn");
+      const result = document.getElementById("result");
+      const footer = document.getElementById("footer");
+
+      const messages = [
+        "Are you sure? 😢",
+        "Think again 💭",
+        "Don’t do this 💔",
+        "Pleaseee 🥺",
+        "Last chance 😅",
+      ];
+
+      let index = 0;
+
+      noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * 250;
+        const y = Math.random() * 60;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+
+        noBtn.innerText = messages[index];
+        index = (index + 1) % messages.length;
+      });
+
+      // ❤️ Yes Click
+      const teddy = document.getElementById("teddy");
+      yesBtn.addEventListener("click", () => {
+        result.style.display = "block";
+        footer.style.display = "block";
+        teddy.style.display = "block";
+        document.querySelector(".container").classList.add("hide-question");
+        document.querySelector(".container").classList.add("love-layout");
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
